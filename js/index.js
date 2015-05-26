@@ -14,9 +14,15 @@ var tick = function() {
 var renderTime = function() {
     // always show two digits
     var minutes = ("0" + Math.floor(time / 60)).slice(-2),
-        seconds = ("0" + (time % 60)).slice(-2);
+        seconds = ("0" + (time % 60)).slice(-2),
+        text = [ minutes, seconds ].join(':');
 
-    remainingLabel.text([ minutes, seconds ].join(':'));
+    renderTitle(text);
+    remainingLabel.text(text);
+};
+
+var renderTitle = function(title) {
+    document.title = title;
 };
 
 var startTimer = function() {
@@ -27,10 +33,6 @@ var startTimer = function() {
     }
 
     timeoutId = setTimeout(tick, 1000);
-};
-
-var stopTimer = function() {
-    clearTimeout(timeoutId);
 };
 
 var stopTimer = function() {
