@@ -4,11 +4,12 @@ var time = 0, // time to go in seconds
 
 var tick = function() {
     if (--time > 0) {
-        renderTime();
         timeoutId = setTimeout(tick, 1000);
     } else {
         stopTimer();
     }
+
+    renderTime();
 };
 
 var renderTime = function() {
